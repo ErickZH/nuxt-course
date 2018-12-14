@@ -1,5 +1,8 @@
 <template lang="html">
-    <h1>Hola mundo</h1>
+    <div>
+        <h1>Albums</h1>
+        <AlbumCard v-for="album in albums" :key="album.id" :album="album"/>
+    </div>
 </template>
 
 <script>
@@ -7,11 +10,21 @@ import axios from 'axios'
 
 import env from '../config/env'
 
+import AlbumCard from '../components/AlbumCard'
+
 export default {
+    data () {
+        return {
+            albums: []
+        };
+    },
     created () {
         axios.get(`${env.endpoint}/albums`).then((response) => {
-            console.log(response.data);
+            this.albums = response.data;
         })
+    },
+    components: {
+        AlbumCard
     }
 }
 </script>
