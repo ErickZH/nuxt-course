@@ -27,14 +27,14 @@ export default {
             photos: [],
         };
     },
-    created () {
-        axios.get(`${env.endpoint}/albums/${this.$route.params.id}`).then((response) => {
-            this.album = response.data;
-        });
+    created: async function () {
+        let albumResponse = await axios.get(`${env.endpoint}/albums/${this.$route.params.id}`);
 
-        axios.get(`${env.endpoint}/albums/${this.$route.params.id}/photos`).then((response) => {
-            this.photos = response.data;
-        });
+        this.album = albumResponse.data;
+
+        let photosResponse = await axios.get(`${env.endpoint}/albums/${this.$route.params.id}/photos`);
+
+        this.photos = photosResponse.data;
     }
 }
 </script>
