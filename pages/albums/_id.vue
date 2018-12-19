@@ -43,8 +43,4 @@ export default {
 .container {
     text-align: center;
 }
-header {
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
 </style>

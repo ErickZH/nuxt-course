@@ -1,6 +1,8 @@
 <template lang="html">
     <div class="container">
-        <h1 class="title">Albums</h1>
+        <header>
+            <h1 class="title">Albums</h1>
+        </header>
         <div class="columns is-multiline">
             <AlbumCard v-for="album in albums" :key="album.id" :album="album"/>
         </div>
